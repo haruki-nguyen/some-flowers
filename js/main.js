@@ -1,22 +1,31 @@
+import { generateStars } from "./stars.js";
 
-onload = () => {
-  const c = setTimeout(() => {
-    document.body.classList.remove("not-loaded");
+// -------------------- Generate Stars --------------------
+generateStars();
 
-    const titles = ('I LOVE U').split('')
-    const titleElement = document.getElementById('title');
-    let index = 0;
+// -------------------- Animate Title --------------------
+const titleContainer = document.querySelector(".title-container .title");
+const title = document.querySelector(".title");
+const titleText = "Anh có điều muốn nói với vợ 😆!";
+const btn = document.querySelector(".btn-romantic");
 
-    function appendTitle() {
-      if (index < titles.length) {
-        titleElement.innerHTML += titles[index];
-        index++;
-        setTimeout(appendTitle, 300); // 1000ms delay
-      }
-    }
+// Render each letter (handles emojis properly)
+titleContainer.innerHTML = Array.from(titleText)
+  .map((char) =>
+    char === " "
+      ? `<span style="margin-right:20px;"></span>`
+      : `<span>${char}</span>`
+  )
+  .join("");
 
-    appendTitle();
+// Apply sequential animation delays
+const spans = titleContainer.querySelectorAll("span");
+spans.forEach((el, index) => {
+  el.style.animationDelay = `${index * 0.1}s`;
+});
 
-    clearTimeout(c);
-  }, 1000);
-};
+// Append button after the last letter animation
+const totalDelay = spans.length * 0.1; // seconds
+setTimeout(() => {
+  btn.classList.add("show");
+}, totalDelay * 1000);

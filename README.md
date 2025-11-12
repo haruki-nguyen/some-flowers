@@ -1,19 +1,39 @@
-# Preview Source
+# Some Flowers
 
-1. index.html + flower.html -> [Live Preview](https://tanbaycu.github.io/flowers_for_someone/)
+Simple static landing page with animated stars and blooming flowers built with HTML, CSS and vanilla JavaScript.
 
-[![image.png](https://i.postimg.cc/4dsdwxcS/image.png)](https://postimg.cc/5HKb21nB)
-[![image.png](https://i.postimg.cc/Bbwnq5Vr/image.png)](https://postimg.cc/ctwSh3Zh)
+## Contents
 
-[![image.png](https://i.postimg.cc/T2kwqG3t/image.png)](https://postimg.cc/z3g88sWh)
+- [index.html](index.html) — main entry page
+- [pages/flowers.html](pages/flowers.html) — animated flowers scene
+- [css/style.css](css/style.css) — global styles (background, title, button)
+- [css/flowers.css](css/flowers.css) — flower / grass animations and layout
+- [js/main.js](js/main.js) — startup logic for index page and title animation
+- [js/animateTitleOnLoad.js](js/animateTitleOnLoad.js) — title animation for flowers page
+- [js/stars.js](js/stars.js) — star generation utility (exports [`generateStars`](js/stars.js))
+- images/ — icon and other image assets
 
----
+## Usage
 
-| Device Type  | Label | Width Range (px) | Example Media Query          |
-| ------------ | ----- | ---------------- | ---------------------------- |
-| Small Mobile | `xs`  | 0 – 479          | `@media (max-width: 479px)`  |
-| Mobile       | `sm`  | 480 – 767        | `@media (min-width: 480px)`  |
-| Tablet       | `md`  | 768 – 1023       | `@media (min-width: 768px)`  |
-| Laptop       | `lg`  | 1024 – 1439      | `@media (min-width: 1024px)` |
-| Desktop      | `xl`  | 1440 – 1919      | `@media (min-width: 1440px)` |
-| Large Screen | `xxl` | 1920+            | `@media (min-width: 1920px)` |
+1. Open the project in a browser:
+   - Double-click [index.html](index.html) or
+   - Serve the folder with a static server (recommended), e.g.:
+     - `npx serve .` or `npx http-server .`
+
+2. Click "Open" to navigate to [pages/flowers.html](pages/flowers.html).
+
+## Customization
+
+- Edit the title text shown on index in [js/main.js](js/main.js).
+- Edit the flowers page title in [js/animateTitleOnLoad.js](js/animateTitleOnLoad.js).
+- Star field density/color: change parameters when calling [`generateStars`](js/stars.js) in [js/main.js](js/main.js) or [js/animateTitleOnLoad.js](js/animateTitleOnLoad.js).
+- Styling and animations live in [css/style.css](css/style.css) and [css/flowers.css](css/flowers.css).
+
+## Development notes
+
+- No build step — plain static files.
+- Animations pause while `.not-loaded` is present on the `body`. The flowers page removes this class after load in [js/animateTitleOnLoad.js](js/animateTitleOnLoad.js).
+
+## Contributing
+
+Small tweaks and fixes welcome. Create branches for feature changes and test by opening the HTML pages locally.
